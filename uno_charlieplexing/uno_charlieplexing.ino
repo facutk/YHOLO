@@ -232,13 +232,60 @@ long previousMicros = 0;
 long interval = 100000;
 
 
+const int max_led = 12;
 
+void print_row( long row ) {
 
+  int i;
+  int j;
+  for ( j = 0; j < 240; j++ ) {
+  
+    for ( i = 0; i <= max_led ; i++ ) {
+      if ( ( row & 1 ) > 0 ) {
+        led_on( i );
+        delayMicroseconds(100); //delayMicroseconds
+        clean();
+      }
+      row >>= 1;
+    }
+  
+  }
+
+}
+// 100000000001 = 2049
+// 010000000010 = 1026
+// 001000000100 = 516
+// 000100001000 = 264
+// 000010010000 = 144
+// 000001100000 = 96
+// 000001100000 = 96
+// 000010010000 = 144
+// 000100001000 = 264
+// 001000000100 = 516
+// 010000000010 = 1026
+// 100000000001 = 2049
 
 
 // the loop routine runs over and over again forever:
 void loop() {
 
+  print_row( 2049 );
+  //print_row( 1026 );
+  //print_row( 516 );
+  //print_row( 264 );
+  //print_row( 144 );
+  print_row( 96 );
+  //print_row( 96 );
+  //print_row( 144 );
+  //print_row( 264 );
+  //print_row( 516 );
+  //print_row( 1026 );
+  //print_row( 2049 );
+  /*
+  long i;
+  for ( i = 0; i < 4095; i++ ) {
+    print_row( i );
+  }
   
   int i;
   for( i = 0; i < 12; i++) {
@@ -257,6 +304,7 @@ void loop() {
   if(currentMicros - previousMicros > interval) {
     previousMicros = currentMicros;   
   }
+  */
   /*
   led1();
   led2();
