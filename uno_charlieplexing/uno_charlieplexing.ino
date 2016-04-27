@@ -229,28 +229,36 @@ void setup() {
 
 
 long previousMicros = 0;
-long interval = 100000;
+
+
 
 
 const int max_led = 12;
 
 void print_row( long row ) {
-
-  int i;
-  int j;
-  for ( j = 0; j < 240; j++ ) {
   
+  long delta = 0;
+  long interval = 30;           // interval at which to blink (milliseconds)
+  unsigned long initialMillis = millis();
+  int i;
+  long row_tmp = row;
+
+  while( delta < interval ) {
+    row_tmp = row;
+    
     for ( i = 0; i <= max_led ; i++ ) {
-      if ( ( row & 1 ) > 0 ) {
+      if ( ( row_tmp & 1 ) > 0 ) {
         led_on( i );
-        delayMicroseconds(1000); //delayMicroseconds
+        delayMicroseconds(50); //delayMicroseconds
         clean();
       }
-      row >>= 1;
+      row_tmp >>= 1;
     }
-  
+
+    delta = millis() - initialMillis;
+
   }
-  delay(25);
+  //delay(25);
 
 }
 // 100000000001 = 2049
@@ -276,12 +284,11 @@ void loop() {
   print_row( 264 );
   print_row( 144 );
   print_row( 96 );
-  print_row( 96 );
   print_row( 144 );
   print_row( 264 );
   print_row( 516 );
   print_row( 1026 );
-  print_row( 2049 );
+
   /*
   long i;
   for ( i = 0; i < 4095; i++ ) {
