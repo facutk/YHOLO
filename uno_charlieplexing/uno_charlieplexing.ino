@@ -243,13 +243,14 @@ void print_row( long row ) {
     for ( i = 0; i <= max_led ; i++ ) {
       if ( ( row & 1 ) > 0 ) {
         led_on( i );
-        delayMicroseconds(100); //delayMicroseconds
+        delayMicroseconds(1000); //delayMicroseconds
         clean();
       }
       row >>= 1;
     }
   
   }
+  delay(25);
 
 }
 // 100000000001 = 2049
@@ -270,17 +271,17 @@ void print_row( long row ) {
 void loop() {
 
   print_row( 2049 );
-  //print_row( 1026 );
-  //print_row( 516 );
-  //print_row( 264 );
-  //print_row( 144 );
+  print_row( 1026 );
+  print_row( 516 );
+  print_row( 264 );
+  print_row( 144 );
   print_row( 96 );
-  //print_row( 96 );
-  //print_row( 144 );
-  //print_row( 264 );
-  //print_row( 516 );
-  //print_row( 1026 );
-  //print_row( 2049 );
+  print_row( 96 );
+  print_row( 144 );
+  print_row( 264 );
+  print_row( 516 );
+  print_row( 1026 );
+  print_row( 2049 );
   /*
   long i;
   for ( i = 0; i < 4095; i++ ) {
