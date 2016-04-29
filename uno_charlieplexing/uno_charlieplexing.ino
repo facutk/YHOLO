@@ -238,7 +238,7 @@ const int max_led = 12;
 void print_row( long row ) {
   
   long delta = 0;
-  long interval = 30;           // interval at which to blink (milliseconds)
+  long interval = 10;           // interval at which to blink (milliseconds)
   unsigned long initialMillis = millis();
   int i;
   long row_tmp = row;
@@ -276,18 +276,24 @@ void print_row( long row ) {
 
 
 // the loop routine runs over and over again forever:
+long sequence[] = {0, 0, 0, 4095, 4095, 4095, 240, 240, 240, 240, 4095, 4095, 4095, 0, 0, 0};
 void loop() {
 
-  print_row( 2049 );
-  print_row( 1026 );
-  print_row( 516 );
-  print_row( 264 );
-  print_row( 144 );
-  print_row( 96 );
-  print_row( 144 );
-  print_row( 264 );
-  print_row( 516 );
-  print_row( 1026 );
+  int i;
+  for( i = 0; i < 24; i++ ) {
+    print_row( sequence[i] );
+  }
+
+  //print_row( 2049 );
+  //print_row( 1026 );
+  //print_row( 516 );
+  //print_row( 264 );
+  //print_row( 144 );
+  //print_row( 96 );
+  //print_row( 144 );
+  //print_row( 264 );
+  //print_row( 516 );
+  //print_row( 1026 );
 
   /*
   long i;
