@@ -220,7 +220,7 @@ void setup() {
   clean();
   //configure pin2 as an input and enable the internal pull-up resistor
   pinMode(2, INPUT_PULLUP);
-  //pinMode(13, OUTPUT);
+  pinMode(13, OUTPUT);
   //Serial.begin(9600);
 }
 
@@ -279,11 +279,19 @@ void print_row( long row ) {
 long sequence[] = {0, 0, 0, 4095, 4095, 4095, 240, 240, 240, 240, 4095, 4095, 4095, 0, 0, 0};
 void loop() {
 
-  int i;
-  for( i = 0; i < 24; i++ ) {
-    print_row( sequence[i] );
-  }
+  //int i;
+  //for( i = 0; i < 24; i++ ) {
+  //  print_row( sequence[i] );
+  //}
 
+  int sensorVal = digitalRead(2);
+  if (sensorVal == HIGH) {
+    digitalWrite(13, LOW);
+  } 
+  else {
+    digitalWrite(13, HIGH);
+  }
+  
   //print_row( 2049 );
   //print_row( 1026 );
   //print_row( 516 );
